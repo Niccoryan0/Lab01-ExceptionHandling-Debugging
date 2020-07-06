@@ -30,13 +30,13 @@ namespace Lab01a_ExceptionHandling
                 int userChoice = Convert.ToInt32(userChoiceStr);
                 int[] newArr = new int[userChoice];
                 int[] popArr = Populate(newArr);
-                // int sumResult = GetSum(popArr);
-                // int prodResult = GetProduct(popArr, prodInt);
+                int sumResult = GetSum(popArr);
+                int prodResult = GetProduct(popArr, sumResult);
                 // int quotResult = GetQuotient(prodResult);
                 Console.WriteLine($"The array you made is size {userChoice}");
                 Console.WriteLine($"The numbers in it are: {string.Join(", ", newArr)}");
-                // Console.WriteLine($"It's sum is {sumResult}");
-                // Console.WriteLine($"{sumResult} times {prodInt} = {prodResult}");
+                Console.WriteLine($"It's sum is {sumResult}");
+                Console.WriteLine($"{sumResult} times {} = {prodResult}");
                 // Console.WriteLine($"{prodResult} divided by {quotInt} = {quotResult}");
             }
             catch (FormatException f)
@@ -70,6 +70,26 @@ namespace Lab01a_ExceptionHandling
             }
             return sum;
         }
+
+        static int GetProduct(int[] myArr, int arrSum)
+        {
+            try
+            {
+                // Have the user select a random number in the range of their array
+                Console.WriteLine($"Please select a number between one and {myArr.Length}");
+                int userChoice = Convert.ToInt32(Console.ReadLine());
+                int product;
+                // Multiply the sum of the array and multiply by the user's array at the chosen index
+                product = arrSum * myArr[userChoice];
+                return product;
+            }
+            catch (IndexOutOfRangeException e)
+            {
+                Console.WriteLine(e.Message);
+                throw;
+            }
+        }
+
 
     }
 }
