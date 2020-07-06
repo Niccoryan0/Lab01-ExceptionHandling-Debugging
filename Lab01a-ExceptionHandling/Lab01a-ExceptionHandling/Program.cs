@@ -6,7 +6,22 @@ namespace Lab01a_ExceptionHandling
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hi!");
+            try
+            {
+                StartSequence();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Oops! Looks like there was some kind of error.");
+                Console.WriteLine(e.Message);
+            }
+            finally
+            {
+                Console.WriteLine("That's all folks! Thanks for visiting.");
+            }
         }
+        static void StartSequence();
+
+
     }
 }
