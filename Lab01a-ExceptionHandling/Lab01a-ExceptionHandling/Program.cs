@@ -27,12 +27,18 @@ namespace Lab01a_ExceptionHandling
             string userChoiceStr = Console.ReadLine();
             int userChoice = Convert.ToInt32(userChoiceStr);
             int[] newArr = new int[userChoice];
-            Populate(newArr);
-            // GetSum(arr);
-            // GetProduct(arr);
-            // GetQuotient(arr);
+            int[] popArr = Populate(newArr);
+            // int sumResult = GetSum(popArr);
+            // int prodResult = GetProduct(popArr, prodInt);
+            // int quotResult = GetQuotient(prodResult);
+            Console.WriteLine($"The array you made is size {userChoice}");
+            Console.WriteLine($"The numbers in it are: {string.Join(", ", newArr)}");
+            // Console.WriteLine($"It's sum is {sumResult}");
+            // Console.WriteLine($"{sumResult} times {prodInt} = {prodResult}");
+            // Console.WriteLine($"{prodResult} divided by {quotInt} = {quotResult}");
         }
 
+        static 
 
     }
 }
