@@ -32,12 +32,12 @@ namespace Lab01a_ExceptionHandling
                 int[] popArr = Populate(newArr);
                 int sumResult = GetSum(popArr);
                 int prodResult = GetProduct(popArr, sumResult);
-                // int quotResult = GetQuotient(prodResult);
+                int quotResult = GetQuotient(prodResult);
                 Console.WriteLine($"The array you made is size {userChoice}");
                 Console.WriteLine($"The numbers in it are: {string.Join(", ", newArr)}");
                 Console.WriteLine($"It's sum is {sumResult}");
-                Console.WriteLine($"{sumResult} times {} = {prodResult}");
-                // Console.WriteLine($"{prodResult} divided by {quotInt} = {quotResult}");
+                Console.WriteLine($"{sumResult} times 0 = {prodResult}");
+                Console.WriteLine($"{prodResult} divided by {quotInt} = {quotResult}");
             }
             catch (FormatException f)
             {
@@ -87,6 +87,26 @@ namespace Lab01a_ExceptionHandling
             {
                 Console.WriteLine(e.Message);
                 throw;
+            }
+        }
+
+        static decimal GetQuotient(int myProd)
+        {
+            try
+            {
+                // Get a number from the user and turn it into a integer
+                Console.WriteLine($"What number would you like to divide {myProd} by?");
+                int userChoice = Convert.ToInt32(Console.ReadLine());
+                // Divide the product by the users chosen integer
+                decimal result = decimal.Divide(myProd, userChoice);
+                return result;
+
+            }
+            catch (DivideByZeroException e)
+            {
+                // If user chooses 0, output the error message and return 0
+                Console.WriteLine(e.Message);
+                return 0;
             }
         }
 
