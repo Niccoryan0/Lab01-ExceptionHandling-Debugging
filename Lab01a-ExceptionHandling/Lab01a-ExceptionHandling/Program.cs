@@ -53,10 +53,17 @@ namespace Lab01a_ExceptionHandling
         {
             for (int i = 0; i < myArr.Length; i++)
             {
-                Console.WriteLine($"Please enter a number: ({i+1} of {myArr.Length})");
+                Console.WriteLine($"Please enter a number less than 1000: ({i+1} of {myArr.Length})");
                 // Get a number from the user for each position in the array, convert them to ints, and populate the array
                 string userChoice = Console.ReadLine();
-                int numChoice = Convert.ToInt32(userChoice);
+                int numChoice = int.Parse(userChoice);
+                if (numChoice > 1000)
+                {
+                    throw (new Exception($"{numChoice} is too high! I said keep it under 1000 buddy."));
+                } else if (numChoice > 10000)
+                {
+                    throw (new Exception($"What in tarnation!? Pretty sure {numChoice} is well above 1000! Get outta here."));
+                }
                 myArr[i] = numChoice;
             }
             return myArr;
@@ -82,7 +89,7 @@ namespace Lab01a_ExceptionHandling
             {
                 // Have the user select a random number in the range of their array, minus one for indexing
                 Console.WriteLine($"Please select a number between one and {myArr.Length}");
-                int userChoice = Convert.ToInt32(Console.ReadLine()) - 1;
+                int userChoice = Int32.Parse(Console.ReadLine()) - 1;
                 int product;
                 // Multiply the sum of the array and multiply by the user's array at the chosen index
                 product = arrSum * myArr[userChoice];
@@ -101,7 +108,8 @@ namespace Lab01a_ExceptionHandling
             {
                 // Get a number from the user and turn it into a integer
                 Console.WriteLine($"What number would you like to divide {myProd} by?");
-                int userChoice = Convert.ToInt32(Console.ReadLine());
+
+                int userChoice = int.Parse(Console.ReadLine());
                 // Divide the product by the users chosen integer
                 decimal result = decimal.Divide(myProd, userChoice);
                 return result;
