@@ -32,12 +32,12 @@ namespace Lab01a_ExceptionHandling
                 int[] popArr = Populate(newArr);
                 int sumResult = GetSum(popArr);
                 int prodResult = GetProduct(popArr, sumResult);
-                int quotResult = GetQuotient(prodResult);
+                decimal quotResult = GetQuotient(prodResult);
                 Console.WriteLine($"The array you made is size {userChoice}");
                 Console.WriteLine($"The numbers in it are: {string.Join(", ", newArr)}");
                 Console.WriteLine($"It's sum is {sumResult}");
-                Console.WriteLine($"{sumResult} times 0 = {prodResult}");
-                Console.WriteLine($"{prodResult} divided by {quotInt} = {quotResult}");
+                Console.WriteLine($"{sumResult} times {prodResult/sumResult} = {prodResult}");
+                Console.WriteLine($"{prodResult} divided by {prodResult / quotResult} = {Decimal.Round(quotResult, 2)}");
             }
             catch (FormatException f)
             {
@@ -52,7 +52,7 @@ namespace Lab01a_ExceptionHandling
         {
             for (int i = 0; i < myArr.Length; i++)
             {
-                Console.WriteLine($"Please enter a number: ({i} of {myArr.Length})");
+                Console.WriteLine($"Please enter a number: ({i+1} of {myArr.Length})");
                 // Get a number from the user for each position in the array, convert them to ints, and populate the array
                 string userChoice = Console.ReadLine();
                 int numChoice = Convert.ToInt32(userChoice);
@@ -100,7 +100,6 @@ namespace Lab01a_ExceptionHandling
                 // Divide the product by the users chosen integer
                 decimal result = decimal.Divide(myProd, userChoice);
                 return result;
-
             }
             catch (DivideByZeroException e)
             {
