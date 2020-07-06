@@ -1,7 +1,7 @@
 # Lab01a Exception Handling and Debugging
 
 ## About This Program
-- Code Fellows 401 ASP.NET lab 1 practice with exception handling and debugging, performs 
+- Code Fellows 401 ASP.NET lab 1 practice with exception handling and debugging, performs simple mathematical equations based on the user's input.
 
 ## Setup
 - Clone down the repo
