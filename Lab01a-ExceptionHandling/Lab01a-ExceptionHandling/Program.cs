@@ -20,7 +20,18 @@ namespace Lab01a_ExceptionHandling
                 Console.WriteLine("That's all folks! Thanks for visiting.");
             }
         }
-        static void StartSequence();
+
+        static void StartSequence()
+        {
+            Console.WriteLine("Please enter any number greater than 0");
+            string userChoiceStr = Console.ReadLine();
+            int userChoice = Convert.ToInt32(userChoiceStr);
+            int[] newArr = new int[userChoice];
+            Populate(newArr);
+            // GetSum(arr);
+            // GetProduct(arr);
+            // GetQuotient(arr);
+        }
 
 
     }
