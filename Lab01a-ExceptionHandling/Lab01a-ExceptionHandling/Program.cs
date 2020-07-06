@@ -25,7 +25,8 @@ namespace Lab01a_ExceptionHandling
         {
             try
             {
-                Console.WriteLine("Please enter any number greater than 0");
+                Console.WriteLine("Welcome to the show! But not like... a fun show. A math show.");
+                Console.WriteLine("Now, please enter any number greater than 0");
                 string userChoiceStr = Console.ReadLine();
                 int userChoice = Convert.ToInt32(userChoiceStr);
                 int[] newArr = new int[userChoice];
@@ -33,11 +34,11 @@ namespace Lab01a_ExceptionHandling
                 int sumResult = GetSum(popArr);
                 int prodResult = GetProduct(popArr, sumResult);
                 decimal quotResult = GetQuotient(prodResult);
-                Console.WriteLine($"The array you made is size {userChoice}");
+                Console.WriteLine($"The array you made is size: {userChoice}");
                 Console.WriteLine($"The numbers in it are: {string.Join(", ", newArr)}");
                 Console.WriteLine($"It's sum is {sumResult}");
-                Console.WriteLine($"{sumResult} times {prodResult/sumResult} = {prodResult}");
-                Console.WriteLine($"{prodResult} divided by {prodResult / quotResult} = {Decimal.Round(quotResult, 2)}");
+                Console.WriteLine($"{sumResult} times {prodResult/sumResult} is {prodResult}");
+                Console.WriteLine($"{prodResult} divided by {prodResult / quotResult} is {Decimal.Round(quotResult, 2)}");
             }
             catch (FormatException f)
             {
@@ -68,6 +69,10 @@ namespace Lab01a_ExceptionHandling
             {
                 sum += num;
             }
+            if (sum < 20)
+            {
+                throw (new Exception($"Value of sum ({sum}) is too low."));
+            }
             return sum;
         }
 
@@ -75,9 +80,9 @@ namespace Lab01a_ExceptionHandling
         {
             try
             {
-                // Have the user select a random number in the range of their array
+                // Have the user select a random number in the range of their array, minus one for indexing
                 Console.WriteLine($"Please select a number between one and {myArr.Length}");
-                int userChoice = Convert.ToInt32(Console.ReadLine());
+                int userChoice = Convert.ToInt32(Console.ReadLine()) - 1;
                 int product;
                 // Multiply the sum of the array and multiply by the user's array at the chosen index
                 product = arrSum * myArr[userChoice];
