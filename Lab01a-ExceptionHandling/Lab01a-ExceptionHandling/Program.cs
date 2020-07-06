@@ -6,7 +6,7 @@ namespace Lab01a_ExceptionHandling
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Console.WriteLine("Hi!");
         }
     }
 }
