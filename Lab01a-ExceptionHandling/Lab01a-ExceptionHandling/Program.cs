@@ -26,19 +26,23 @@ namespace Lab01a_ExceptionHandling
             try
             {
                 Console.WriteLine("Welcome to the show! But not like... a fun show. A math show.");
-                Console.WriteLine("Now, please enter any number greater than 0");
+                Console.WriteLine("Now, please enter any number greater than 0 (but for your own sake, make it less than 20)");
                 string userChoiceStr = Console.ReadLine();
                 int userChoice = Convert.ToInt32(userChoiceStr);
+                // Create the array
                 int[] newArr = new int[userChoice];
+                // Populate array with values
                 int[] popArr = Populate(newArr);
+                // Call each of the methods to get values for sum, product and quotient
                 int sumResult = GetSum(popArr);
                 int prodResult = GetProduct(popArr, sumResult);
                 decimal quotResult = GetQuotient(prodResult);
+                // Display results to user
                 Console.WriteLine($"The array you made is size: {userChoice}");
                 Console.WriteLine($"The numbers in it are: {string.Join(", ", newArr)}");
                 Console.WriteLine($"It's sum is {sumResult}");
                 Console.WriteLine($"{sumResult} times {prodResult/sumResult} is {prodResult}");
-                Console.WriteLine($"{prodResult} divided by {prodResult / quotResult} is {Decimal.Round(quotResult, 2)}");
+                Console.WriteLine($"{prodResult} divided by {Decimal.Round(prodResult / quotResult)} is {Decimal.Round(quotResult, 2)}");
             }
             catch (FormatException f)
             {
@@ -53,10 +57,12 @@ namespace Lab01a_ExceptionHandling
         {
             for (int i = 0; i < myArr.Length; i++)
             {
-                Console.WriteLine($"Please enter a number less than 1000: ({i+1} of {myArr.Length})");
-                // Get a number from the user for each position in the array, convert them to ints, and populate the array
+                // Get a number from the user for each position in the array, convert them to ints, and populate the array at i with the number
+                Console.WriteLine($"Please enter a number less than 1000 ({i+1} of {myArr.Length})");
                 string userChoice = Console.ReadLine();
+                // Convert to integer
                 int numChoice = int.Parse(userChoice);
+                // Kick em out if they break the rules.
                 if (numChoice > 1000)
                 {
                     throw (new Exception($"{numChoice} is too high! I said keep it under 1000 buddy."));
@@ -64,6 +70,7 @@ namespace Lab01a_ExceptionHandling
                 {
                     throw (new Exception($"What in tarnation!? Pretty sure {numChoice} is well above 1000! Get outta here."));
                 }
+                // Populate the array with the value if it made it this far
                 myArr[i] = numChoice;
             }
             return myArr;
@@ -98,7 +105,7 @@ namespace Lab01a_ExceptionHandling
             catch (IndexOutOfRangeException e)
             {
                 Console.WriteLine(e.Message);
-                throw;
+                throw e;
             }
         }
 
